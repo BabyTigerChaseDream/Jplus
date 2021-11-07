@@ -20,3 +20,31 @@ docker-compose up
 docker exec -it django_container /bin/bash
 - inside docker 
 root@5ab2fe1354cd:/django# python manage.py migrate
+
+Part#4
+docker-compose build
+
+# CMD below not working
+#docker-compose run django_app sh -c "django-admin startapp newapp ."
+# working ones:
+docker-compose run --rm app django-admin startproject newapp .
+
+# if you use alpine build , we cannot use CMD [docker exec -it django_container /bin/bash]
+docker exec -it django_app sh
+
+
+# I am using 'NONE-alpine' image so I can use command below to enter shell:
+docker exec -it django_container /bin/bash
+root@13a56f6b8fff:/django# 
+
+#Run Celery Task
+    python manage.py shell
+    from newapp.tasks import add
+    add.delay(2, 2)
+
+Info:
+PYTHONUNBUFFERED:
+Setting the non-empty value of PYTHONUNBUFFERED means 
+that the python output is transmitted directly to the 
+terminal without being buffered and that allows displaying 
+the application’s output in real-time.
