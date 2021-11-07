@@ -1,0 +1,14 @@
+#Part#1
+#docker build --tag python-django .
+#docker run --publish 8000:8000 python-django
+
+Part#2
+- remove all django init files
+delete 'core/core/' directory
+delete manage.py
+delete db.sqlite3
+- build django docker 
+docker-compose build
+- create django projects from Django Docker 
+docker-compose run --rm app django-admin startproject core.
+docker-compose up
