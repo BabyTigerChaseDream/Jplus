@@ -1,4 +1,6 @@
-FROM python:3.8-slim-buster
+#FROM python:3.8-slim-buster
+# for mysql in comtainer,need to use 3.8 / slim-buster will not work
+FROM python:3.8
 ENV PYTHONUNBUFFERED=1
 WORKDIR /django
 
